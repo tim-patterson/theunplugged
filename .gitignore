@@ -1,0 +1,5 @@
+# GitHub Pages build output — assembled by .github/workflows/deploy.yml
+_site/
+
+# index.html is generated from "The Unplugged - Final.dc.html" at build time
+/index.html
