@@ -19,6 +19,19 @@
 <style>
   *{box-sizing:border-box}
   body{margin:0}
+  /* Self-sufficiency grid: exactly 1 col on mobile, 2 cols above 600px, so the
+     4 cards always fill the grid evenly. Container draws the top/left edges and
+     every cell draws its right/bottom edge — correct at any filled column count. */
+  .ss-grid{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid #3a4a2b;border-left:1px solid #3a4a2b}
+  @media (min-width:600px){.ss-grid{grid-template-columns:1fr 1fr}}
+  /* Vision maxims: 1 col stacked on mobile, 3-up above 600px. Dividers adapt so
+     the strip never orphans an item or leaves a dangling edge divider on wrap. */
+  .vision-maxims{display:grid;grid-template-columns:1fr;margin-top:36px;border-top:1px solid #3a4a2b;border-bottom:1px solid #3a4a2b}
+  .vision-maxims>div:not(:last-child){border-bottom:1px solid #3a4a2b}
+  @media (min-width:600px){
+    .vision-maxims{grid-template-columns:repeat(3,1fr)}
+    .vision-maxims>div:not(:last-child){border-bottom:0;border-right:1px solid #3a4a2b}
+  }
 </style>
 </helmet>
 
@@ -82,10 +95,10 @@
         <p style="margin:0;font-size:17px;line-height:1.65;color:#4a5a3a">There is a different quiet up here. No notifications, no feed — only the weather, the work, and one another. This isn't about running from the modern world so much as remembering an older one, where a day was measured by what you made of it.</p>
         <p style="margin:0;font-size:17px;line-height:1.65;color:#4a5a3a">The plan is simple and slow: grow our own food, mend our own roofs, and keep the lamps lit from the stream and the sun. None of it will be easy. All of it will be shared. This is an invitation to belong — to a place, and to each other.</p>
       </div>
-      <div style="display:flex;flex-wrap:wrap;gap:0;margin-top:36px;border-top:1px solid #3a4a2b;border-bottom:1px solid #3a4a2b">
-        <div style="flex:1 1 200px;padding:18px 22px;border-right:1px solid #3a4a2b"><div style="font-family:'IM Fell English',Georgia,serif;font-size:23px">Enough, not more.</div></div>
-        <div style="flex:1 1 200px;padding:18px 22px;border-right:1px solid #3a4a2b"><div style="font-family:'IM Fell English',Georgia,serif;font-size:23px">Made, not bought.</div></div>
-        <div style="flex:1 1 200px;padding:18px 22px"><div style="font-family:'IM Fell English',Georgia,serif;font-size:23px">Together, not alone.</div></div>
+      <div class="vision-maxims">
+        <div style="padding:18px 22px"><div style="font-family:'IM Fell English',Georgia,serif;font-size:23px">Enough, not more.</div></div>
+        <div style="padding:18px 22px"><div style="font-family:'IM Fell English',Georgia,serif;font-size:23px">Made, not bought.</div></div>
+        <div style="padding:18px 22px"><div style="font-family:'IM Fell English',Georgia,serif;font-size:23px">Together, not alone.</div></div>
       </div>
     </div>
 
@@ -93,23 +106,23 @@
     <div style="padding:clamp(34px,5.5vw,52px) clamp(20px,5vw,64px);border-bottom:1px solid #3a4a2b">
       <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--honey,#c98a2b);margin-bottom:14px">II. How we'll live off the grid</div>
       <h2 style="margin:0 0 32px;font-family:'IM Fell English',Georgia,serif;font-weight:400;font-size:clamp(27px,5.5vw,40px);line-height:1.1">Everything we need, made between us.</h2>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:0;border:1px solid #3a4a2b">
+      <div class="ss-grid">
         <div style="padding:28px 30px;border-right:1px solid #3a4a2b;border-bottom:1px solid #3a4a2b">
           <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;color:var(--honey,#c98a2b);margin-bottom:8px">01</div>
           <h3 style="margin:0 0 10px;font-family:'IM Fell English',Georgia,serif;font-weight:400;font-size:26px">The Farm</h3>
           <p style="margin:0;font-size:15px;line-height:1.6;color:#4a5a3a">Two acres of terraced beds, a glasshouse against the frost, and a small herd of goats and hens that will learn our names.</p>
         </div>
-        <div style="padding:28px 30px;border-bottom:1px solid #3a4a2b">
+        <div style="padding:28px 30px;border-right:1px solid #3a4a2b;border-bottom:1px solid #3a4a2b">
           <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;color:var(--honey,#c98a2b);margin-bottom:8px">02</div>
           <h3 style="margin:0 0 10px;font-family:'IM Fell English',Georgia,serif;font-weight:400;font-size:26px">The Power</h3>
           <p style="margin:0;font-size:15px;line-height:1.6;color:#4a5a3a">A north-facing roof of solar panels and a bank of cellar batteries to keep the workshops humming through the long winters.</p>
         </div>
-        <div style="padding:28px 30px;border-right:1px solid #3a4a2b">
+        <div style="padding:28px 30px;border-right:1px solid #3a4a2b;border-bottom:1px solid #3a4a2b">
           <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;color:var(--honey,#c98a2b);margin-bottom:8px">03</div>
           <h3 style="margin:0 0 10px;font-family:'IM Fell English',Georgia,serif;font-weight:400;font-size:26px">The Water</h3>
           <p style="margin:0;font-size:15px;line-height:1.6;color:#4a5a3a">Mountain springs feeding the cisterns; greywater filtered through reed beds and returned to the orchard.</p>
         </div>
-        <div style="padding:28px 30px">
+        <div style="padding:28px 30px;border-right:1px solid #3a4a2b;border-bottom:1px solid #3a4a2b">
           <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;color:var(--honey,#c98a2b);margin-bottom:8px">04</div>
           <h3 style="margin:0 0 10px;font-family:'IM Fell English',Georgia,serif;font-weight:400;font-size:26px">The Hearth</h3>
           <p style="margin:0;font-size:15px;line-height:1.6;color:#4a5a3a">Bread from the wood-fired oven, preserves for the cellar, wool from the flock, and a table long enough for everyone to come.</p>
